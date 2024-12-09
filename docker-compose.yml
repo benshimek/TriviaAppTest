@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  android-room:
+    build: .
+    container_name: android-room
+    image: android-room:latest
+    working_dir: /workspace
+    volumes:
+      - /Users/ben/AndroidStudioProjects/TriviaApp3:/workspace  # Your local project directory mapped to /workspace
+    environment:
+      - ANDROID_SDK_ROOT=/opt/android-sdk
+      - GRADLE_USER_HOME=/workspace/.gradle
+    ports:
+      - "8080:8080"  # Expose any ports (optional)
+    stdin_open: true  # Keep stdin open for interactive sessions
+    tty: true  # Keep the terminal open for interactivity
+    command: tail -f /dev/null  # Keeps the container running
